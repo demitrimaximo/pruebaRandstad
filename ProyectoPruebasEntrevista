@@ -1,0 +1,64 @@
+package eltiburon.proyectopruebasentrevista;
+
+import java.util.Scanner;
+
+/**
+ *
+ * @author Angel Gustavo Hernandez Frias
+ */
+public class ProyectoPruebasEntrevista {
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+        // Leemos tamaño de lista y el número de operaciones
+        // Tamaño de lista x
+        // Número de operaciones y
+        int x = scanner.nextInt();
+        int y = scanner.nextInt();
+        int[] list = new int[x];
+
+        for (int i = 0; i < y; i++) {
+            int iniciaOperacion = scanner.nextInt() - 1;
+            int terminaOperacion = scanner.nextInt() - 1;
+            int numeroOperar = scanner.nextInt();
+            list = realizarOperaciones(iniciaOperacion, terminaOperacion, numeroOperar,list);
+        }
+        valorMaximo(list);
+    }
+
+    public static int[] realizarOperaciones(int inicio, int fin, int cantidad, int []list) {
+        for (int j = inicio; j <= fin; j++) {
+            list[j] += cantidad;
+        }
+        return list;
+    }
+
+    public static void valorMaximo(int lista[]) {
+        int max = 0;
+        for (int num : lista) {
+            if (num > max) {
+                max = num;
+            }
+        }
+        System.out.println(max);
+    }
+}
+
+/*
+
+El programa lo que hace es como indica el enunciado leer dos valores que indican
+tamaño de la lista y numero de operaciones, es decir, por cada iteracion se 
+operará sobre la misma lista añadiendo el valor determinado(k) para finalmente
+mostrar el valor maximo en la lista despues de operar. Se eligió int por ser el 
+valor minimo en los requerimientos del enunciado.
+
+Eleji este enfoque por ser el más simple de implementar para el problema dado.
+Otra solución podría ser crear una matriz de nxm y en cada operacion llenar 
+una fila de la matriz y al final sumar cada columna e ir comparando la suma con
+otro número para determinar el mayor.
+
+Otra solucón sería obviar las operaciones y determinarlas por la frecuencia en 
+la que aparecen determinados numeros en las operaciones.
+
+*/
